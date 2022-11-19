@@ -14,4 +14,21 @@ export const initdb = async () => {
       }
     })
   }
+
+export const getDb = async() => {
+    const contactDb = await openDB('contact_db', 1);
+    const tx = contactDb.transaction('contacts', 'readonly');
+    const store = tx.objectStore('contacts');
+    const request= store.getAll()
+    const result = await request;
+    return result
+}
+
+export const postDb = async(name, email, phone, profile) => {
+    const contactDb = await openDB('contact_db', 1);
+    const tx = contactDb.transaction('contacts', 'readwrite');
+    const store = tx.objectStore('contacts');
+    const request= store.add({ name: name, email: email, phone: phone, profile: profile })
+    const result = await request;
+}
   
