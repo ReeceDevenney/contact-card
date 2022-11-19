@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "idb": "^7.1.1"
+  }
 }
